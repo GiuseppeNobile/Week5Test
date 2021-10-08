@@ -56,5 +56,21 @@ namespace Week5Test
             Console.ReadKey();
 
         }
+
+        public static void ApprovaSpesa()
+        {
+            using SpeseContext ctx = new();
+
+            var spesaNonApprovata = ctx.setSpese.FirstOrDefault(s => s.Approvato == false);
+            spesaNonApprovata.Approvato = true;
+
+
+            ctx.SaveChanges();
+
+            Console.WriteLine("---- Premi un tasto ----");
+            Console.ReadKey();
+        }
+
+        
     }
 }
