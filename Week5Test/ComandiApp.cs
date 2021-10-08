@@ -94,6 +94,50 @@ namespace Week5Test
             Console.WriteLine("---- Premi un tasto ----");
             Console.ReadKey();
         }
-        
+
+        public static void ListaSpeseApprovate()
+        {
+            Console.Clear();
+            Console.WriteLine("Lista Spese Approvate: ");
+
+            using (SpeseContext ctx = new())
+            {
+                ctx.setSpese.Where(s => s.Approvato == true).ToList();
+            }
+
+            Console.WriteLine("---- Premi un tasto ----");
+            Console.ReadKey();
+        }
+
+        public static void ListaSpeseUtente()
+        {
+            Console.Clear();
+            Console.WriteLine("Selezionare Utente: ");
+            var utente = Console.ReadLine();
+
+            using (SpeseContext ctx = new())
+            {
+                ctx.setSpese.Where(s => s.Utente == utente).ToList();
+            }
+
+            Console.WriteLine("---- Premi un tasto ----");
+            Console.ReadKey();
+        }
+
+        public static void TotaleSpeseCategoria()
+        {
+            Console.Clear();
+            Console.WriteLine("Selezionare ID Categoria: ");
+            var categoria = Console.ReadLine();
+
+            using (SpeseContext ctx = new())
+            {
+                ctx.setSpese.Where(s => Convert.ToString(s.CategoriaId) == categoria).Sum(s=> s.Importo);
+            }
+
+            Console.WriteLine("---- Premi un tasto ----");
+            Console.ReadKey();
+        }
+
     }
 }
