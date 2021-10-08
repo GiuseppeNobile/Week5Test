@@ -11,6 +11,21 @@ namespace Week5Test
 {
     public static class ComandiApp
     {
+
+        public static void ListaSpese()
+        {
+            Console.Clear();
+            Console.WriteLine("Lista Spese: ");
+
+            using (SpeseContext ctx = new())
+            {
+                ctx.Spese.ToList();
+            }
+
+            Console.WriteLine("---- Premi un tasto ----");
+            Console.ReadKey();
+        }
+
         public static void InserisciSpesa()
         {
             using SpeseContext ctx = new();
