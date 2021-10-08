@@ -6,7 +6,7 @@ namespace Week5Test
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("GESTIONE SPESE");
         }
     }
 }
