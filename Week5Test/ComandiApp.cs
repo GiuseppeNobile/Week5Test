@@ -59,7 +59,7 @@ namespace Week5Test
 
         public static void ApprovaSpesa()
         {
-
+            Console.Clear();
             Console.WriteLine("seleziona ID della spesa da approvare: ");
             var IdSpesa = Console.ReadLine();
             var spesaId = Convert.ToInt32(IdSpesa);
@@ -76,6 +76,24 @@ namespace Week5Test
             Console.ReadKey();
         }
 
+        public static void CancellaSpesa()
+        {
+            Console.Clear();
+            Console.WriteLine("seleziona ID della spesa da cancellare:");
+            var IdSpesa = Console.ReadLine();
+            var spesaId = Convert.ToInt32(IdSpesa);
+
+            using (SpeseContext ctx = new())
+            {
+                var spesaDaCancellare = ctx.setSpese.FirstOrDefault(s => s.Id == spesaId);
+                ctx.setSpese.Remove(spesaDaCancellare);
+
+                ctx.SaveChanges();
+            }
+
+            Console.WriteLine("---- Premi un tasto ----");
+            Console.ReadKey();
+        }
         
     }
 }
