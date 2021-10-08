@@ -59,13 +59,18 @@ namespace Week5Test
 
         public static void ApprovaSpesa()
         {
-            using SpeseContext ctx = new();
 
-            var spesaNonApprovata = ctx.setSpese.FirstOrDefault(s => s.Approvato == false);
-            spesaNonApprovata.Approvato = true;
+            Console.WriteLine("seleziona ID della spesa da approvare: ");
+            var IdSpesa = Console.ReadLine();
+            var spesaId = Convert.ToInt32(IdSpesa);
 
+            using (SpeseContext ctx = new()) 
+            {                
+                var spesaNonApprovata = ctx.setSpese.FirstOrDefault(s => s.Id == spesaId && s.Approvato == false);
+                spesaNonApprovata.Approvato = true;
 
-            ctx.SaveChanges();
+                ctx.SaveChanges();
+            };           
 
             Console.WriteLine("---- Premi un tasto ----");
             Console.ReadKey();
