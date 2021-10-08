@@ -9,8 +9,8 @@ namespace Week5Test.EntityFramework.Configurations
     {
         public void Configure(EntityTypeBuilder<Categorie> builder)
         {
-            builder.HasKey(p => p.Id);
-            builder.Property(p => p.Categoria).HasMaxLength(30).IsRequired();
+            builder.HasKey(c => c.Id);
+            builder.Property(c => c.Categoria).HasMaxLength(30).IsRequired();
         }
     }
 }

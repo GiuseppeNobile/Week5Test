@@ -52,6 +52,5 @@ namespace Week5Test.EntityFramework
             modelBuilder.ApplyConfiguration(new CategorieConfiguration());
         }
 
-
     }
 }

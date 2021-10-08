@@ -15,5 +15,6 @@ namespace Week5Test.Models
         public string Utente { get; set; }
         public decimal Importo { get; set; }
         public bool Approvato { get; set; }
+
     }
 }

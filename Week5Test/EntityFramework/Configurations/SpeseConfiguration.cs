@@ -17,7 +17,7 @@ namespace Week5Test.EntityFramework.Configurations
             builder.Property(s => s.Importo).IsRequired();
             builder.Property(s => s.Approvato).IsRequired();
 
-            builder.HasOne(s => s.CategoriaId).WithMany(l => l.ListaSpese);
+            builder.HasOne(s => s.CategoriaId).WithMany(c => c.ListaSpese);
         }
     }
 }
