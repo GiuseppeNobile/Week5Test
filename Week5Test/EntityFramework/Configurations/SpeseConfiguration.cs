@@ -11,13 +11,12 @@ namespace Week5Test.EntityFramework.Configurations
         {
             builder.HasKey(s => s.Id);
             builder.Property(s => s.Data).IsRequired();
-            builder.Property(s => s.CategoriaId).IsRequired();
             builder.Property(s => s.Descrizione).HasMaxLength(500).IsRequired();
             builder.Property(s => s.Utente).HasMaxLength(100).IsRequired();
             builder.Property(s => s.Importo).IsRequired();
             builder.Property(s => s.Approvato).IsRequired();
 
-            builder.HasOne(s => s.CategoriaId).WithMany(c => c.ListaSpese);
+            builder.HasOne(s => s.Categoria).WithMany(c => c.ListaSpese);
         }
     }
 }

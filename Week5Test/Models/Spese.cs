@@ -10,7 +10,7 @@ namespace Week5Test.Models
     {
         public int Id {get; set;}
         public DateTime Data { get; set; }
-        public Categorie CategoriaId { get; set; }
+        public Categorie Categoria { get; set; }
         public string Descrizione { get; set; }
         public string Utente { get; set; }
         public decimal Importo { get; set; }

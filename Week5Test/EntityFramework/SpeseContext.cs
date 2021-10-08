@@ -32,15 +32,15 @@ namespace Week5Test.EntityFramework
         }
 
         //DbSet
-        public DbSet<Spese> setSpese { get; set; }
-        public DbSet<Categorie> setCategorie { get; set; }
+        public DbSet<Spese> Spese { get; set; }
+        public DbSet<Categorie> Categorie { get; set; }
 
         //Metodi
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                string connectionStringSQL = config.GetConnectionString("Week5test");
+                string connectionStringSQL = config.GetConnectionString("Week5Test");
 
                 optionsBuilder.UseSqlServer(connectionStringSQL);
             }

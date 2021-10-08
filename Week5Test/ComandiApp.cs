@@ -24,7 +24,7 @@ namespace Week5Test
             Console.WriteLine("Categoria: ");
             string categoria = Console.ReadLine();
 
-            var selectedCategory = ctx.setCategorie.FirstOrDefault(c => c.Categoria.ToUpper() == categoria.ToUpper());
+            var selectedCategory = ctx.Categorie.FirstOrDefault(c => c.Categoria.ToUpper() == categoria.ToUpper());
 
             Console.WriteLine("Descrizione: ");
             string descrizione = Console.ReadLine();
@@ -42,14 +42,14 @@ namespace Week5Test
             Spese newSpesa = new()
             {
                 Data = DateTime.Now,
-                CategoriaId = selectedCategory,
+                Categoria = selectedCategory,
                 Descrizione = descrizione,
                 Utente = utente,
                 Importo = Convert.ToDecimal(importo),
                 Approvato = Convert.ToBoolean(approvato)
             };
 
-            ctx.setSpese.Add(newSpesa);
+            ctx.Spese.Add(newSpesa);
             ctx.SaveChanges();
 
             Console.WriteLine("---- Premi un tasto ----");
@@ -66,7 +66,7 @@ namespace Week5Test
 
             using (SpeseContext ctx = new()) 
             {                
-                var spesaNonApprovata = ctx.setSpese.FirstOrDefault(s => s.Id == spesaId && s.Approvato == false);
+                var spesaNonApprovata = ctx.Spese.FirstOrDefault(s => s.Id == spesaId && s.Approvato == false);
                 spesaNonApprovata.Approvato = true;
 
                 ctx.SaveChanges();
@@ -85,8 +85,8 @@ namespace Week5Test
 
             using (SpeseContext ctx = new())
             {
-                var spesaDaCancellare = ctx.setSpese.FirstOrDefault(s => s.Id == spesaId);
-                ctx.setSpese.Remove(spesaDaCancellare);
+                var spesaDaCancellare = ctx.Spese.FirstOrDefault(s => s.Id == spesaId);
+                ctx.Spese.Remove(spesaDaCancellare);
 
                 ctx.SaveChanges();
             }
@@ -102,7 +102,7 @@ namespace Week5Test
 
             using (SpeseContext ctx = new())
             {
-                ctx.setSpese.Where(s => s.Approvato == true).ToList();
+                ctx.Spese.Where(s => s.Approvato == true).ToList();
             }
 
             Console.WriteLine("---- Premi un tasto ----");
@@ -117,7 +117,7 @@ namespace Week5Test
 
             using (SpeseContext ctx = new())
             {
-                ctx.setSpese.Where(s => s.Utente == utente).ToList();
+                ctx.Spese.Where(s => s.Utente == utente).ToList();
             }
 
             Console.WriteLine("---- Premi un tasto ----");
@@ -132,7 +132,7 @@ namespace Week5Test
 
             using (SpeseContext ctx = new())
             {
-                ctx.setSpese.Where(s => Convert.ToString(s.CategoriaId) == categoria).Sum(s=> s.Importo);
+                ctx.Spese.Where(s => Convert.ToString(s.Categoria) == categoria).Sum(s=> s.Importo);
             }
 
             Console.WriteLine("---- Premi un tasto ----");
